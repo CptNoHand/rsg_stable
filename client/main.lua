@@ -884,6 +884,6 @@ AddEventHandler('rsg_stable:client:brushhorse', function(itemName)
 	ClearPedDamageDecalByZone(SpawnplayerHorse, 10, "ALL")
 	ClearPedBloodDamage(SpawnplayerHorse)
 	Citizen.InvokeNative(0xD8544F6260F5F01E, SpawnplayerHorse, 10)
-	exports['rsg_notify']:DisplayNotification('nice and clean', 5000)
+	exports['qbr-core']:Notify(9, 'nice and clean', 5000, 0, 'inventory_items', 'kit_horse_brush', 'COLOR_WHITE')
 end)
 

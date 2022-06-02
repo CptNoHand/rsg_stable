@@ -68,7 +68,7 @@ RegisterNetEvent("rsg_stable:BuyHorse", function(data, name)
 
 	MySQL.Async.fetchAll('SELECT * FROM horses WHERE `cid`=@cid;', {cid = Playercid}, function(horses)
 		if #horses >= 3 then
-			TriggerClientEvent('rsg_notify:client:notifiy', src, 'you can have a maximum of 3 horses!', 5000)
+			TriggerClientEvent('QBCore:Notify', src, 9, 'you can have a maximum of 3 horses!', 5000, 0, 'mp_lobby_textures', 'cross', 'COLOR_WHITE')
 			return
 		end
 		Wait(200)
@@ -76,16 +76,18 @@ RegisterNetEvent("rsg_stable:BuyHorse", function(data, name)
 			local currentBank = Player.Functions.GetMoney('bank')
 			if data.Gold <= currentBank then
 				local bank = Player.Functions.RemoveMoney("bank", data.Gold, "stable-bought-horse")
+				TriggerClientEvent('QBCore:Notify', src, 9, 'horse purchased for $'..data.Gold, 5000, 0, 'satchel_textures', 'animal_horse', 'COLOR_WHITE')
 				TriggerEvent('qbr-log:server:CreateLog', 'shops', 'Stable', 'green', "**"..GetPlayerName(Player.PlayerData.source) .. " (citizenid: "..Player.PlayerData.citizenid.." | id: "..Player.PlayerData.source..")** bought a horse for $"..data.Gold..".")
 			else
-				TriggerClientEvent('rsg_notify:client:notifiy', src, 'not enough money in your bank', 5000)
+				TriggerClientEvent('QBCore:Notify', src, 8, 'not enough money', 5000, 'not enough money in your Bank!', 'satchel_textures', 'animal_horse', 'COLOR_WHITE')
 				return
 			end
 		else
 			if Player.Functions.RemoveMoney("cash", data.Dollar, "stable-bought-horse") then
+				TriggerClientEvent('QBCore:Notify', src, 9, 'horse purchased for $'..data.Dollar, 5000, 0, 'satchel_textures', 'animal_horse', 'COLOR_WHITE')
 				TriggerEvent('qbr-log:server:CreateLog', 'shops', 'Stable', 'green', "**"..GetPlayerName(Player.PlayerData.source) .. " (citizenid: "..Player.PlayerData.citizenid.." | id: "..Player.PlayerData.source..")** bought a horse for $"..data.Dollar..".")
 			else
-				TriggerClientEvent('rsg_notify:client:notifiy', src, 'not enough cash in your wallet', 5000)
+				TriggerClientEvent('QBCore:Notify', src, 8, 'not enough money', 5000, 'not enough money in your Wallet!', 'satchel_textures', 'animal_horse', 'COLOR_WHITE')
 				return
 			end
 		end
