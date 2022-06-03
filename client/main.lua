@@ -333,7 +333,7 @@ local function WhistleHorse()
         if GetScriptTaskStatus(SpawnplayerHorse, 0x4924437D, 0) ~= 0 then
             local pcoords = GetEntityCoords(PlayerPedId())
             local hcoords = GetEntityCoords(SpawnplayerHorse)
-            local caldist = Vdist(pcoords.x, pcoords.y, pcoords.z, hcoords.x, hcoords.y, hcoords.z)
+            local caldist = #(pcoords - hcoords)
             if caldist >= 100 then
                 DeleteEntity(SpawnplayerHorse)
                 Wait(1000)
