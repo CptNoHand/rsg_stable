@@ -1,8 +1,8 @@
-# RexshackGaming version of qbr-stable
+# RexshackGaming
 - discord : https://discord.gg/s5uSk56B65
 - youtube : https://www.youtube.com/channel/UCikEgGfXO-HCPxV5rYHEVbA
 - github : https://github.com/RexShack
-- webstore : https://rexshackgaming.tebex.io
+- support-me : https://rexshackgaming.tebex.io/package/5114907
 
 # Framework QBCore RedM Edition
 - https://github.com/qbcore-redm-framework
